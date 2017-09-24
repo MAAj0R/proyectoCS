@@ -1,0 +1,2 @@
+module LudumsHelper
+end

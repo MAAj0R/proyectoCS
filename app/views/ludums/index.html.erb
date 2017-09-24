@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ludums</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ludums.each do |ludum| %>
+      <tr>
+        <td><%= link_to 'Show', ludum %></td>
+        <td><%= link_to 'Edit', edit_ludum_path(ludum) %></td>
+        <td><%= link_to 'Destroy', ludum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ludum', new_ludum_path %>

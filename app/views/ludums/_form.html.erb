@@ -1,0 +1,17 @@
+<%= form_for(ludum) do |f| %>
+  <% if ludum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ludum.errors.count, "error") %> prohibited this ludum from being saved:</h2>
+
+      <ul>
+      <% ludum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

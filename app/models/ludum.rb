@@ -1,0 +1,2 @@
+class Ludum < ApplicationRecord
+end
