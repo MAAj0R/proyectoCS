@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170922232635) do
+ActiveRecord::Schema.define(version: 20170925001648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "commonts", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "pist_id"
+    t.index ["post_id"], name: "index_commonts_on_post_id", using: :btree
+    t.index ["user_id"], name: "index_commonts_on_user_id", using: :btree
+  end
 
   create_table "homes", force: :cascade do |t|
     t.string   "index"
@@ -22,6 +43,35 @@ ActiveRecord::Schema.define(version: 20170922232635) do
   end
 
   create_table "ludums", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pests", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pists", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "user"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pusts", force: :cascade do |t|
+    t.string   "title"
+    t.string   "content"
+    t.string   "user"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,5 +103,9 @@ ActiveRecord::Schema.define(version: 20170922232635) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "commonts", "posts"
+  add_foreign_key "commonts", "users"
   add_foreign_key "teams", "users"
 end

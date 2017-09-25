@@ -1,0 +1,8 @@
+<% @commonts.each do |commont|  %>
+
+<p> <%= commont.content  %></p>
+<%= link_to "Borrar comentario", [commont.pist, commont], method: :delete%>
+<% end %>
+
+
+<%= render 'commonts/form' %>

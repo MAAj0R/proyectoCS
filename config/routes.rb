@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :pists do 
+  	resources :commonts
+  	
+
+  end
   get 'home/index'
 
   resources :ludums
